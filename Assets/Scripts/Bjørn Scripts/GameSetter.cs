@@ -14,6 +14,6 @@ public class GameSetter : MonoBehaviour
     public void StartGameType(string game)
     {
         SetGameType(game);
-        SceneManager.LoadScene("BjørnTestScene");
+        SceneManager.LoadScene("BjørnGameTest");
     }
 }
