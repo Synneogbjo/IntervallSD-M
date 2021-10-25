@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: "Assets/Scenes/Test Scenes/Bj\xF8rn/Bj\xF8rnMainMenuTest.unity"
     guid: 9098f4a108fb6f441a635b4f7b70e1aa
   - enabled: 1
-    path: "Assets/Scenes/Test Scenes/Bj\xF8rn/Bj\xF8rnTestScene.unity"
+    path: "Assets/Scenes/Test Scenes/Bj\xF8rn/Bj\xF8rnGameTest.unity"
     guid: 15ba4678bb54db14ebd647babf704eb7
   m_configObjects: {}

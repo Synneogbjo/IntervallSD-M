@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour
 {
-    public AudioClip[] notes;
-    private AudioSource _Audio;
+    [SerializeField] private AudioClip[] notes;
+    private AudioSource noteAudio;
 
     private void Start()
     {
-        _Audio = GetComponent<AudioSource>();
+        noteAudio = GetComponent<AudioSource>();
     }
 
     public void PlayNote(int note)
     {
-        _Audio.PlayOneShot(notes[note-1]);
+        if (note > notes.Length)
+        {
+            note -= 12;
+        }
+        
+        noteAudio.PlayOneShot(notes[note-1]);
+        print("Note spilt: " + (note-1));
     }
 }
