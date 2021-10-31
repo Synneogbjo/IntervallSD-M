@@ -60,6 +60,7 @@
       <updated>1635151983709</updated>
       <workItem from="1635151986741" duration="9081000" />
       <workItem from="1635165434724" duration="1277000" />
+      <workItem from="1635186682502" duration="2656000" />
     </task>
     <servers />
   </component>
@@ -71,5 +72,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/ObjectShake.cs</url>
+          <line>9</line>
+          <properties documentPath="C:\Users\bjorn\Documents\GitHub\IntervallSD-M\Assets\Scripts\Bjørn Scripts\ObjectShake.cs" initialLine="9" containingFunctionPresentation="method 'Update'">
+            <startOffsets>
+              <option value="190" />
+            </startOffsets>
+            <endOffsets>
+              <option value="191" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

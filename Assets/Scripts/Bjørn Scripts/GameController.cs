@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -18,7 +19,8 @@ public class GameController : MonoBehaviour
     private int randomNote;
     
     [SerializeField] private NoteController notes;
-    [SerializeField] private TMP_Text isAnswerCorrect; 
+    [SerializeField] private TMP_Text isAnswerCorrect;
+
     private Input _Input;
     private float hideTextTimer;
     private float hideTextWait = 2f;

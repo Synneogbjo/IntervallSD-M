@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Input : MonoBehaviour
 {
-    public bool hasGuessed;
-    public int digit;
+    [HideInInspector] public bool hasGuessed;
+    [HideInInspector] public int digit;
     
     private void Update()
     {
