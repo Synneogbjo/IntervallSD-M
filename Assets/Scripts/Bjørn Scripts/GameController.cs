@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -11,17 +10,19 @@ public class GameController : MonoBehaviour
     private int Guess;
     private bool HasGuessed;
 
+    private bool PlayingNotes;
+
     private float timer;
     private float waitBetweenNotes = 2f;
 
     private int usedInterval;
-    private int[] intervals = {1,3,5,6,8,10,12,13};
+    private int[] intervals = {0,2,4,5,7,9,11,12};
     private int randomNote;
     
-    [SerializeField] private NoteController notes;
+    [SerializeField] private NoteController _Notes;
     [SerializeField] private TMP_Text isAnswerCorrect;
-
     private Input _Input;
+
     private float hideTextTimer;
     private float hideTextWait = 2f;
 
@@ -32,18 +33,22 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (_Input.hasGuessed)
+        if (!PlayingNotes)
         {
-            Guess = _Input.digit;
-            _Input.hasGuessed = false;
-            CheckGuess();
+            if (HasGuessed)
+            {
+                if (_Input.hasGuessed) Guess = _Input.digit;
+                
+                _Input.hasGuessed = false;
+                CheckGuess(waitBetweenNotes);
+            }
         }
-        
+
         if (timer <= 0f)
         {
-            if (!PlayedNoteOne) PlayNoteOne();
-            else if (!PlayedNoteTwo) PlayNoteTwo();
-            else if (HasGuessed) CheckGuess();
+            if (!PlayedNoteOne) PlayNoteOne(waitBetweenNotes);
+            else if (!PlayedNoteTwo) PlayNoteTwo(waitBetweenNotes);
+            else PlayingNotes = false;
         }
         else timer -= Time.deltaTime;
 
@@ -54,14 +59,13 @@ public class GameController : MonoBehaviour
         else hideTextTimer -= Time.deltaTime;
     }
 
-    private void PlayNoteOne()
+    private void PlayNoteOne(float waitTime)
     {
         PlayedNoteOne = true;
-        notes.PlayNote(SetGrunntone.grunnTone);
-        timer = waitBetweenNotes;
-        print(SetGrunntone.grunnTone);
+        _Notes.PlayNote(SetGrunntone.grunnTone);
+        timer = waitTime;
     }
-    private void PlayNoteTwo()
+    private void PlayNoteTwo(float waitTime)
     {
         PlayedNoteTwo = true;
         HasGuessed = false;
@@ -69,13 +73,16 @@ public class GameController : MonoBehaviour
         usedInterval = (int)(Mathf.Floor(Random.Range(0, 8)));
         if (usedInterval >= 8) usedInterval = 7;
         
-        randomNote = intervals[usedInterval];
-        notes.PlayNote(randomNote);
-        timer = waitBetweenNotes;
-        print(randomNote);
+        randomNote = intervals[usedInterval] + SetGrunntone.grunnTone;
+        if (randomNote >= _Notes.notes.Length)
+        {
+            randomNote -= 12;
+        }
+        _Notes.PlayNote(randomNote);
+        timer = waitTime;
     }
 
-    private void CheckGuess()
+    private void CheckGuess(float waitTime)
     {
         if (Guess == usedInterval)
         {
@@ -89,13 +96,14 @@ public class GameController : MonoBehaviour
         PlayedNoteOne = false;
         PlayedNoteTwo = false;
         HasGuessed = true;
-        timer = waitBetweenNotes;
+        PlayingNotes = true;
+        timer = waitTime;
     }
 
     private void SetGuess(int guess)
     {
         Guess = guess;
-        CheckGuess();
+        HasGuessed = true;
     }
 
     private void Correct()
@@ -106,7 +114,7 @@ public class GameController : MonoBehaviour
 
     private void Wrong()
     {
-        isAnswerCorrect.text = "Wrong!";
+        isAnswerCorrect.text = Guess + ":" + usedInterval;
         hideTextTimer = hideTextWait;
     }
 

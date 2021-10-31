@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] notes;
+    public AudioClip[] notes;
     private AudioSource noteAudio;
 
     private void Start()
@@ -18,6 +18,6 @@ public class NoteController : MonoBehaviour
         }
         
         noteAudio.PlayOneShot(notes[note-1]);
-        print("Note spilt: " + (note-1));
+        print("Note spilt: " + notes[note-1]);
     }
 }

@@ -168,10 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0523472d5ebd824aa240d343e303616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notes: {fileID: 1022092111}
+  _Notes: {fileID: 1022092111}
   isAnswerCorrect: {fileID: 1575092286}
-  shakeOnWrongGuess:
-  - {fileID: 1203918755}
 --- !u!114 &71428980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,6 +1342,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 349705300161405715, guid: cd66d6c32e6c871439ef685564db9785, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 349705300161405715, guid: cd66d6c32e6c871439ef685564db9785, type: 3}
       propertyPath: simulationSpeed
       value: 0.5
       objectReference: {fileID: 0}
@@ -1369,7 +1371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 349705300161405715, guid: cd66d6c32e6c871439ef685564db9785, type: 3}
       propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 349705300161405715, guid: cd66d6c32e6c871439ef685564db9785, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -1500,19 +1502,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes:
-  - {fileID: 8300000, guid: e96827f4b5e5a3846ad046eb8dee2d23, type: 3}
-  - {fileID: 8300000, guid: f23d63fdddfc6024aac4c6bf10c13a5f, type: 3}
-  - {fileID: 8300000, guid: cd8c984eeeadb9c4ab54644de5e505e6, type: 3}
-  - {fileID: 8300000, guid: da5308c3aaffcf842802f5aa56b6298a, type: 3}
-  - {fileID: 8300000, guid: 64ae602d469cbf2418adc6c208a5f4a4, type: 3}
-  - {fileID: 8300000, guid: 6193ad196731a174a9c0f2daeb9df448, type: 3}
-  - {fileID: 8300000, guid: c7b6fdbb5081f5541bc47327404cea4a, type: 3}
-  - {fileID: 8300000, guid: 36291a1d509dbbb479d88c44def89074, type: 3}
-  - {fileID: 8300000, guid: 50483118991a0c740ac6634fcb43f008, type: 3}
-  - {fileID: 8300000, guid: 98f5ee308903b8b4ba4bd41b8fe4e34d, type: 3}
-  - {fileID: 8300000, guid: 17b370ef0e939c941ae38186c4ae5f37, type: 3}
-  - {fileID: 8300000, guid: 129eb7f9244fee041abb728e89f8a1fe, type: 3}
-  - {fileID: 8300000, guid: 669c2e8f5a918644c9cede3ef57f4cdf, type: 3}
+  - {fileID: 8300000, guid: d707c268338b0ee44b91d8ff049b854b, type: 3}
+  - {fileID: 8300000, guid: 8aa3fd94ccfa27b439a5880afad94f80, type: 3}
+  - {fileID: 8300000, guid: 23ec8de4dfdf14c46adbc8a411253273, type: 3}
+  - {fileID: 8300000, guid: 5d26b47e7bb08e7428c70c3b857b97e6, type: 3}
+  - {fileID: 8300000, guid: 1832fe5b10884c449bbdd8b9afc19585, type: 3}
+  - {fileID: 8300000, guid: ef730021205fd6945b92e16d75dfe234, type: 3}
+  - {fileID: 8300000, guid: 28c6e4e1903a88d4e86d5eedf4137e32, type: 3}
+  - {fileID: 8300000, guid: 410055ea40b7deb4ca26f34a37aa6697, type: 3}
+  - {fileID: 8300000, guid: 9875425cc507a914799d538a2d5a3fa0, type: 3}
+  - {fileID: 8300000, guid: 209075be27b36094b901aeb91c46f569, type: 3}
+  - {fileID: 8300000, guid: 044deb58121e2d4438591c6361c8d20d, type: 3}
+  - {fileID: 8300000, guid: d0faa1aeac42bbb49ab1047268882d43, type: 3}
+  - {fileID: 8300000, guid: 4a33db52089fcdc4199073cdaf17749b, type: 3}
+  - {fileID: 8300000, guid: 3ffc60e134927ea498e87468fda3867a, type: 3}
+  - {fileID: 8300000, guid: 206278476e002fc469031cb7e292bd2a, type: 3}
+  - {fileID: 8300000, guid: 74bf833b2173f564085d2e925e1d87ae, type: 3}
+  - {fileID: 8300000, guid: 310eee81f96a9c54eb346c87b8793a88, type: 3}
+  - {fileID: 8300000, guid: 41d8cd7bca59d7144b120f9aba35abc7, type: 3}
+  - {fileID: 8300000, guid: 95b309e412b8d1d4993813c2579655d3, type: 3}
+  - {fileID: 8300000, guid: 6429e0904c77bc644862291b3cd38b53, type: 3}
+  - {fileID: 8300000, guid: 838981e59e3a6ce4aba11c0da80d160b, type: 3}
+  - {fileID: 8300000, guid: ff122de098fe9fc45970a4ce42df15aa, type: 3}
+  - {fileID: 8300000, guid: 47539b57c2fdfe24686603ac5ec05e2f, type: 3}
+  - {fileID: 8300000, guid: b0b4081ed7aecdf4aadf69b47f93a35c, type: 3}
+  - {fileID: 8300000, guid: c013199de8b104049b5dd6a8249ad933, type: 3}
 --- !u!82 &1022092112
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2081,7 +2095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1106be5349b4d9e4eb8be3dea75764fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  str: 1
 --- !u!1 &1282096824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,7 +2689,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1782946345}
   - component: {fileID: 1782946344}
-  - component: {fileID: 1782946343}
   - component: {fileID: 1782946342}
   m_Layer: 0
   m_Name: UI Camera
@@ -2717,14 +2729,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1782946343
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782946341}
-  m_Enabled: 1
 --- !u!20 &1782946344
 Camera:
   m_ObjectHideFlags: 0
