@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     private int Guess;
     public bool HasGuessed;
     private bool justSwappedGuess;
+    private bool justActivatedButtons;
 
     private bool PlayingNotes = true;
     private int instrument;
@@ -44,18 +45,26 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (PlayingNotes)
+        if (PlayingNotes && justActivatedButtons)
         {
+            justActivatedButtons = false;
             foreach (Button btn in _Buttons)
             {
                 btn.interactable = false;
             }
         }
-        else
+        else if (!justActivatedButtons)
         {
+            justActivatedButtons = true;
+            
             foreach (Button btn in _Buttons)
             {
                 btn.interactable = true;
+                if (GameSetter.useTimer)
+                {
+                    answerTimer = setAnswerTimer;
+                    answerTimerTxt.gameObject.SetActive(true);
+                }
             }
         }
         if (answerTimerTxt.IsActive())
@@ -107,12 +116,6 @@ public class GameController : MonoBehaviour
                     instrument = 1;
                     PlayNoteTwo(waitBetweenNotes);
                     instrument = 0;
-                }
-
-                if (GameSetter.useTimer)
-                {
-                    answerTimer = setAnswerTimer;
-                    answerTimerTxt.gameObject.SetActive(true);
                 }
             }
 
@@ -166,10 +169,8 @@ public class GameController : MonoBehaviour
     private void PlayNoteOne(float waitTime)
     {
         PlayedNoteOne = true;
-
-        var i = 0;
-        if (GameSetter.useChord) i = 12;
-        _Notes.PlayNote(SetGrunntone.grunnTone + i, instrument);
+        
+        _Notes.PlayNote(SetGrunntone.grunnTone, instrument);
         timer = waitTime;
         
         _Particles.PlayParticles(0, -5f, 5f, 3f, 0f);
