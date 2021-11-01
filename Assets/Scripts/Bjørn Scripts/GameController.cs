@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     private bool PlayingNotes = true;
     private int instrument;
 
-    private float timer;
+    private float timer = 1f;
     private float waitBetweenNotes = 2f;
     private float answerTimer;
     [SerializeField] private float setAnswerTimer = 5f;
@@ -179,7 +179,7 @@ public class GameController : MonoBehaviour
         _Notes.PlayNote(SetGrunntone.grunnTone, instrument);
         timer = waitTime;
         
-        _Particles.PlayParticles(0, -5f, 5f, 3f, 0f);
+        _Particles.PlayParticlesAt(0, -5f, 5f, 3f, 0f);
     }
     private void PlayNoteTwo(float waitTime)
     {
@@ -192,7 +192,7 @@ public class GameController : MonoBehaviour
         _Notes.PlayNote(randomNote, instrument);
         timer = waitTime;
         
-        _Particles.PlayParticles(1, -5f, 5f, 3f, 0f);
+        _Particles.PlayParticlesAt(1, -5f, 5f, 3f, 0f);
     }
 
     private void CheckGuess(float waitTime)
@@ -228,6 +228,7 @@ public class GameController : MonoBehaviour
     private void Correct()
     {
         _Notes.PlayCorrect();
+        _Particles.PlayStarParticles();
         isAnswerCorrect.text = "Riktig!";
         hideTextTimer = hideTextWait;
     }
