@@ -12,6 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/Input.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/CameraShaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/GameSetter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/NoteController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/SetGrunntone.cs" root0="FORCE_HIGHLIGHTING" />
@@ -64,7 +65,8 @@
       <workItem from="1635186682502" duration="2656000" />
       <workItem from="1635714422033" duration="2774000" />
       <workItem from="1635758057117" duration="5488000" />
-      <workItem from="1635769738761" duration="3169000" />
+      <workItem from="1635769738761" duration="4551000" />
+      <workItem from="1635797863898" duration="2671000" />
     </task>
     <servers />
   </component>

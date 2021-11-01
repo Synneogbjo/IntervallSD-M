@@ -11,11 +11,12 @@ public class GameController : MonoBehaviour
     private int Guess;
     public bool HasGuessed;
     private bool justSwappedGuess;
+    private bool justActivatedButtons;
 
     private bool PlayingNotes = true;
     private int instrument;
 
-    private float timer;
+    private float timer = 1f;
     private float waitBetweenNotes = 2f;
     private float answerTimer;
     [SerializeField] private float setAnswerTimer = 5f;
@@ -38,24 +39,33 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         _Particles = GetComponent<CreateParticle>();
-        
+
+        instrument = GameSetter.mainInstrument;
         SetGrunntone.SetGrunnTone(Random.Range(1, 13));
     }
 
     void Update()
     {
-        if (PlayingNotes)
+        if (PlayingNotes && justActivatedButtons)
         {
+            justActivatedButtons = false;
             foreach (Button btn in _Buttons)
             {
                 btn.interactable = false;
             }
         }
-        else
+        else if (!justActivatedButtons)
         {
+            justActivatedButtons = true;
+            
             foreach (Button btn in _Buttons)
             {
                 btn.interactable = true;
+                if (GameSetter.useTimer)
+                {
+                    answerTimer = setAnswerTimer;
+                    answerTimerTxt.gameObject.SetActive(true);
+                }
             }
         }
         if (answerTimerTxt.IsActive())
@@ -104,15 +114,14 @@ public class GameController : MonoBehaviour
                 if (!PlayedNoteOne)
                 {
                     PlayNoteOne(0f);
-                    instrument = 1;
-                    PlayNoteTwo(waitBetweenNotes);
-                    instrument = 0;
-                }
+                    instrument += 1;
 
-                if (GameSetter.useTimer)
-                {
-                    answerTimer = setAnswerTimer;
-                    answerTimerTxt.gameObject.SetActive(true);
+                    if (instrument >= _Notes.amountOfInstruments)
+                    {
+                        instrument = 0;
+                    }
+                    PlayNoteTwo(waitBetweenNotes);
+                    instrument = GameSetter.mainInstrument;
                 }
             }
 
@@ -166,13 +175,11 @@ public class GameController : MonoBehaviour
     private void PlayNoteOne(float waitTime)
     {
         PlayedNoteOne = true;
-
-        var i = 0;
-        if (GameSetter.useChord) i = 12;
-        _Notes.PlayNote(SetGrunntone.grunnTone + i, instrument);
+        
+        _Notes.PlayNote(SetGrunntone.grunnTone, instrument);
         timer = waitTime;
         
-        _Particles.PlayParticles(0, -5f, 5f, 3f, 0f);
+        _Particles.PlayParticlesAt(0, -5f, 5f, 3f, 0f);
     }
     private void PlayNoteTwo(float waitTime)
     {
@@ -185,7 +192,7 @@ public class GameController : MonoBehaviour
         _Notes.PlayNote(randomNote, instrument);
         timer = waitTime;
         
-        _Particles.PlayParticles(1, -5f, 5f, 3f, 0f);
+        _Particles.PlayParticlesAt(1, -5f, 5f, 3f, 0f);
     }
 
     private void CheckGuess(float waitTime)
@@ -220,12 +227,15 @@ public class GameController : MonoBehaviour
 
     private void Correct()
     {
+        _Notes.PlayCorrect();
+        _Particles.PlayStarParticles();
         isAnswerCorrect.text = "Riktig!";
         hideTextTimer = hideTextWait;
     }
 
     private void Wrong()
     {
+        _Notes.PlayWrong();
         isAnswerCorrect.text = "Feil! Det riktige svaret var " + intervalNames[usedInterval];
         hideTextTimer = hideTextWait;
     }
