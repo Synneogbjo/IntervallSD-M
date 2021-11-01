@@ -7,7 +7,7 @@ public class GameSetter : MonoBehaviour
     public static bool useChord;
     public static bool useGrunntoneFirst = true;
     public static bool useTimer;
-
+    public static int mainInstrument;
 
     public void StartGame(string scene)
     {
@@ -33,5 +33,9 @@ public class GameSetter : MonoBehaviour
     {
         useTimer = i;
     }
-    
+
+    public void SetInstrument(int i)
+    {
+        mainInstrument = i;
+    }
 }

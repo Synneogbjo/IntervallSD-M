@@ -4,6 +4,9 @@ public class NoteController : MonoBehaviour
 {
     public AudioClip[] bassNotes;
     public AudioClip[] keyboardNotes;
+    public int amountOfInstruments = 2;
+    public AudioClip wrongAudio;
+    public AudioClip correctAudio;
     private AudioSource noteAudio;
 
     private void Start()
@@ -33,5 +36,14 @@ public class NoteController : MonoBehaviour
                  noteAudio.PlayOneShot(keyboardNotes[note - 1]);
                  break;
         }
+    }
+    
+    public void PlayWrong(){
+        noteAudio.PlayOneShot(wrongAudio);
+    }
+
+    public void PlayCorrect()
+    {
+        noteAudio.PlayOneShot(correctAudio);
     }
 }

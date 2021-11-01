@@ -39,7 +39,8 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         _Particles = GetComponent<CreateParticle>();
-        
+
+        instrument = GameSetter.mainInstrument;
         SetGrunntone.SetGrunnTone(Random.Range(1, 13));
     }
 
@@ -113,9 +114,14 @@ public class GameController : MonoBehaviour
                 if (!PlayedNoteOne)
                 {
                     PlayNoteOne(0f);
-                    instrument = 1;
+                    instrument += 1;
+
+                    if (instrument >= _Notes.amountOfInstruments)
+                    {
+                        instrument = 0;
+                    }
                     PlayNoteTwo(waitBetweenNotes);
-                    instrument = 0;
+                    instrument = GameSetter.mainInstrument;
                 }
             }
 
@@ -221,12 +227,14 @@ public class GameController : MonoBehaviour
 
     private void Correct()
     {
+        _Notes.PlayCorrect();
         isAnswerCorrect.text = "Riktig!";
         hideTextTimer = hideTextWait;
     }
 
     private void Wrong()
     {
+        _Notes.PlayWrong();
         isAnswerCorrect.text = "Feil! Det riktige svaret var " + intervalNames[usedInterval];
         hideTextTimer = hideTextWait;
     }
