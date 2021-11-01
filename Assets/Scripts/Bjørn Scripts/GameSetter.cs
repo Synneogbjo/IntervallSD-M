@@ -3,17 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class GameSetter : MonoBehaviour
 {
-    public static string gameType;
     public static bool useRandomGrunntone;
     public static bool useChord;
     public static bool useGrunntoneFirst = true;
     public static bool useTimer;
 
-
-    public void SetGameType(string game)
-    {
-        gameType = game;
-    }
 
     public void StartGame(string scene)
     {
@@ -39,4 +33,5 @@ public class GameSetter : MonoBehaviour
     {
         useTimer = i;
     }
+    
 }

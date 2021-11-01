@@ -3,50 +3,49 @@ using UnityEngine.InputSystem;
 
 public class Input : MonoBehaviour
 {
-    [HideInInspector] public bool hasGuessed;
-    [HideInInspector] public int digit;
-    
+    private GameController _Controller;
+
+    private void Start()
+    {
+        _Controller = GetComponent<GameController>();
+    }
+
     private void Update()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        if (!_Controller.HasGuessed)
         {
-            hasGuessed = true;
-            digit = 0;
-        }
-        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            hasGuessed = true;
-            digit = 1;
-        }
-        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            hasGuessed = true;
-            digit = 2;
-        }
-        else if (Keyboard.current.digit4Key.wasPressedThisFrame)
-        {
-            hasGuessed = true;
-            digit = 3;
-        }
-        else if (Keyboard.current.digit5Key.wasPressedThisFrame)
-        {
-            hasGuessed = true;
-            digit = 4;
-        }
-        else if (Keyboard.current.digit6Key.wasPressedThisFrame)
-        {
-            hasGuessed = true;
-            digit = 5;
-        }
-        else if (Keyboard.current.digit7Key.wasPressedThisFrame)
-        {
-            hasGuessed = true;
-            digit = 6;
-        }
-        else if (Keyboard.current.digit8Key.wasPressedThisFrame)
-        {
-            hasGuessed = true;
-            digit = 7;
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(0);
+            }
+            else if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(1);
+            }
+            else if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(2);
+            }
+            else if (Keyboard.current.digit4Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(3);
+            }
+            else if (Keyboard.current.digit5Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(4);
+            }
+            else if (Keyboard.current.digit6Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(5);
+            }
+            else if (Keyboard.current.digit7Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(6);
+            }
+            else if (Keyboard.current.digit8Key.wasPressedThisFrame)
+            {
+                _Controller.SetGuess(7);
+            }
         }
     }
 }

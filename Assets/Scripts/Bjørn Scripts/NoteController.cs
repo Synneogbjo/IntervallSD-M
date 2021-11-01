@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour
 {
-    public AudioClip[] notes;
+    public AudioClip[] bassNotes;
+    public AudioClip[] keyboardNotes;
     private AudioSource noteAudio;
 
     private void Start()
@@ -10,13 +11,27 @@ public class NoteController : MonoBehaviour
         noteAudio = GetComponent<AudioSource>();
     }
 
-    public void PlayNote(int note)
+    public void PlayNote(int note, int instrument)
     {
-        if (note > notes.Length)
+        switch (instrument)
         {
-            note -= 12;
+             case 0:
+                if (note > bassNotes.Length)
+                {
+                    note -= 12;
+                }
+
+                noteAudio.PlayOneShot(bassNotes[note - 1]);
+                break;
+             
+             case 1:
+                 if (note > keyboardNotes.Length)
+                 {
+                     note -= 12;
+                 }
+
+                 noteAudio.PlayOneShot(keyboardNotes[note - 1]);
+                 break;
         }
-        
-        noteAudio.PlayOneShot(notes[note-1]);
     }
 }

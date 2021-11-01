@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0523472d5ebd824aa240d343e303616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasGuessed: 0
   setAnswerTimer: 5
   answerTimerTxt: {fileID: 563145527}
   _Notes: {fileID: 1022092111}
@@ -194,8 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66231c1d657cd5c4ca63c9ea09c6362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasGuessed: 0
-  digit: 0
 --- !u!114 &71428981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +288,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 195136385}
   m_OnClick:
     m_PersistentCalls:
@@ -1176,7 +1175,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 733815316}
   m_OnClick:
     m_PersistentCalls:
@@ -1470,7 +1469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4a163900d82bb4988baecfed5c212b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notes:
+  bassNotes:
   - {fileID: 8300000, guid: d707c268338b0ee44b91d8ff049b854b, type: 3}
   - {fileID: 8300000, guid: 8aa3fd94ccfa27b439a5880afad94f80, type: 3}
   - {fileID: 8300000, guid: 23ec8de4dfdf14c46adbc8a411253273, type: 3}
@@ -1496,6 +1495,32 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 47539b57c2fdfe24686603ac5ec05e2f, type: 3}
   - {fileID: 8300000, guid: b0b4081ed7aecdf4aadf69b47f93a35c, type: 3}
   - {fileID: 8300000, guid: c013199de8b104049b5dd6a8249ad933, type: 3}
+  keyboardNotes:
+  - {fileID: 8300000, guid: 7c6d5f9932bbc214e8edef473f6c15e6, type: 3}
+  - {fileID: 8300000, guid: a4ca063f335bfa549b498872d91a86d5, type: 3}
+  - {fileID: 8300000, guid: ea201f11e3feb0549beeca18cda84fb5, type: 3}
+  - {fileID: 8300000, guid: 84afb96f037e76142bc35417d1eb9ccf, type: 3}
+  - {fileID: 8300000, guid: 296b9b7776e33c74d84e5b666a685cb0, type: 3}
+  - {fileID: 8300000, guid: aa5b23e8cdb6891489b5f418af119acf, type: 3}
+  - {fileID: 8300000, guid: c79333c508eb71f4ebaddbd24d27f0bb, type: 3}
+  - {fileID: 8300000, guid: d9688b7c82bd19c4e9f6e3e3cea7f535, type: 3}
+  - {fileID: 8300000, guid: 12ea428289871bf4caa55adee34f53f3, type: 3}
+  - {fileID: 8300000, guid: 41e564331827aea4393ed46856bf0385, type: 3}
+  - {fileID: 8300000, guid: 910493a4992e60b41b19a140cbc22d5a, type: 3}
+  - {fileID: 8300000, guid: bfabb719ef303eb4a8b1732e1fb1566c, type: 3}
+  - {fileID: 8300000, guid: 895fbd51a0d20314e996369e32371578, type: 3}
+  - {fileID: 8300000, guid: 5b1b114cfddc81c419a9cc193c695e2e, type: 3}
+  - {fileID: 8300000, guid: accf7bb059ed00447a483d560987fbd2, type: 3}
+  - {fileID: 8300000, guid: fd547ba7076ef3449a4ee13772e17a12, type: 3}
+  - {fileID: 8300000, guid: 808ad6b38a70ba04dad650dd9624735b, type: 3}
+  - {fileID: 8300000, guid: ffc00f6f692079e4a93500f251d6c835, type: 3}
+  - {fileID: 8300000, guid: f706eca93143cb24aba37a550ac9e7a2, type: 3}
+  - {fileID: 8300000, guid: 5fc7971d8e207c9409b6e4e7ae8f174d, type: 3}
+  - {fileID: 8300000, guid: 7a262f9dd1d528f4b97b5234a797765c, type: 3}
+  - {fileID: 8300000, guid: 6720baef7188e244ab46c72e500e4d01, type: 3}
+  - {fileID: 8300000, guid: befd635e27630954185dfcbd0c85b59e, type: 3}
+  - {fileID: 8300000, guid: ec532b80bb7db6b41b489be3fbc6eb3c, type: 3}
+  - {fileID: 8300000, guid: 84bbdc46206235649a395d4c07c3c5f9, type: 3}
 --- !u!82 &1022092112
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1952,7 +1977,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1132847431}
   m_OnClick:
     m_PersistentCalls:
@@ -2199,7 +2224,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1282096827}
   m_OnClick:
     m_PersistentCalls:
@@ -2960,7 +2985,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1951441034}
   m_OnClick:
     m_PersistentCalls:
@@ -3227,7 +3252,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1996557199}
   m_OnClick:
     m_PersistentCalls:
@@ -3360,7 +3385,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2035778964}
   m_OnClick:
     m_PersistentCalls:
@@ -3493,7 +3518,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2056620736}
   m_OnClick:
     m_PersistentCalls:
