@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
@@ -25,15 +26,18 @@ public class GameController : MonoBehaviour
     [SerializeField] private NoteController _Notes;
     [SerializeField] private TMP_Text isAnswerCorrect;
     private Input _Input;
+    private CreateParticle _Particles;
 
     private float hideTextTimer;
     private float hideTextWait = 2f;
 
     private string[] intervalNames = {"prim","sekund","ters","kvart","kvint","sekst","septim","oktav"};
+    [SerializeField] private Button[] _Buttons;
 
     private void Start()
     {
         _Input = GetComponent<Input>();
+        _Particles = GetComponent<CreateParticle>();
         
         SetGrunntone.SetGrunnTone(Random.Range(1, 13));
     }
@@ -140,6 +144,8 @@ public class GameController : MonoBehaviour
         PlayedNoteOne = true;
         _Notes.PlayNote(SetGrunntone.grunnTone);
         timer = waitTime;
+        
+        _Particles.PlayParticles(0, -5f, 5f, 3f, 0f);
     }
     private void PlayNoteTwo(float waitTime)
     {
@@ -156,6 +162,8 @@ public class GameController : MonoBehaviour
         }
         _Notes.PlayNote(randomNote);
         timer = waitTime;
+        
+        _Particles.PlayParticles(1, -5f, 5f, 3f, 0f);
     }
 
     private void CheckGuess(float waitTime)
