@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 public class GameSetter : MonoBehaviour
 {
     public static string gameType;
+    public static bool useRandomGrunntone;
+    public static bool useChord;
+    public static bool useGrunntoneFirst = true;
+    public static bool useTimer;
 
 
     public void SetGameType(string game)
@@ -11,9 +15,28 @@ public class GameSetter : MonoBehaviour
         gameType = game;
     }
 
-    public void StartGameType(string game)
+    public void StartGame(string scene)
     {
-        SetGameType(game);
-        SceneManager.LoadScene("BjørnGameTest");
+        SceneManager.LoadScene(scene);
+    }
+
+    public void DoRandomGrunntone(bool i)
+    {
+        useRandomGrunntone = i;
+    }
+
+    public void DoChord(bool i)
+    {
+        useChord = i;
+    }
+
+    public void DoGrunntoneFirst(bool i)
+    {
+        useGrunntoneFirst = i;
+    }
+
+    public void DoTimer(bool i)
+    {
+        useTimer = i;
     }
 }

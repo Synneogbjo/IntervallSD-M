@@ -15,6 +15,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/GameSetter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/NoteController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/SetGrunntone.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bjørn Scripts/CreateParticle.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zzXe29mGOeZyfABRvLjbbkncuH" />
   <component name="ProjectViewState">
@@ -62,6 +63,8 @@
       <workItem from="1635165434724" duration="1277000" />
       <workItem from="1635186682502" duration="2656000" />
       <workItem from="1635714422033" duration="2774000" />
+      <workItem from="1635758057117" duration="5488000" />
+      <workItem from="1635769738761" duration="1771000" />
     </task>
     <servers />
   </component>
