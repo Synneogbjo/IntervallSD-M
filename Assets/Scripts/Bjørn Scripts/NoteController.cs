@@ -18,6 +18,5 @@ public class NoteController : MonoBehaviour
         }
         
         noteAudio.PlayOneShot(notes[note-1]);
-        print("Note spilt: " + notes[note-1]);
     }
 }
