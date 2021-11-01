@@ -29,8 +29,10 @@ namespace TestScript
 
         public string[] buttons;
 
+        [Header("Components")]
         public MusicController noteController;
         public GameSetter gameSetter;
+        public Effects effects;
 
         private void Start()
         {
@@ -106,22 +108,21 @@ namespace TestScript
                 // could be return function
                 print("Please select a Button");
             }
-            else if (rightAnswer == currentIndex)
+            else 
             {
-                print("You Suck-seeded");
-            
+                if (rightAnswer == currentIndex)
+                {
+                    print("You Suck-seeded");
+                    effects.Correct();
+                }
+                else
+                {
+                    print("you f'd up");
+                    effects.Wrong();
+                }
                 trueAnswer.Clear();
                 falseAnswer.Clear();
-                Start();
-                currentIndex = -1;
-            }
-            else
-            {
-                print("you f'd up");
-            
-                trueAnswer.Clear();
-                falseAnswer.Clear();
-                Start();
+                RestartQuestioning();
                 currentIndex = -1;
             }
         }

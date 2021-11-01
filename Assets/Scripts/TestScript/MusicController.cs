@@ -15,8 +15,14 @@ namespace TestScript
             Descend
         }
         [HideInInspector] public bool ascendOrDescend;
-        
-        
+
+        public Instruments instuments;
+        public enum Instruments
+        {
+            Bass,
+            Piano
+        }
+
         [Header("Instrument")]
         [Tooltip("Bass = 1, Piano = 2")]
         [SerializeField] private int firstInstrument = 1;
@@ -30,23 +36,24 @@ namespace TestScript
         private int m_BaseNote;
         
         [Header("Intervals")]
-        [SerializeField]private readonly int[] m_Intervals = {0,2,4,5,7,9,11,12};
-        [SerializeField]public string[] intervalsStrings;
+        [SerializeField]private int[] intervals = {0,2,4,5,7,9,11,12};
+        [SerializeField]public string[] intervalsStrings = {"Prim","Sekund","Ters","Kvart","Kvint","Sekst","Septim","Oktav"};
         
-        [Header("Components")]
+        [Header("Components")]      
         public AudioSource audioSource;
+        public GameSetter gameSetter;
         
         [Header("Timer")]
         [SerializeField] private float waitBetweenNotes = 2f;
         
-        private void Update()
+        private void Start()
         {
             ascendDescend = ascendOrDescend ? AscendDescend.Ascend : AscendDescend.Descend;
         }
 
         public void SetBaseNote()
         {
-            int tone = Random.Range(1, bassNotes.Length)-1;
+            int tone = Random.Range(0, pianoNotes.Length/2 -4);
             m_BaseNote = tone;
         }
 
@@ -66,26 +73,32 @@ namespace TestScript
 
         private IEnumerator IntervalWait(int note1, int note2)
         {
-            if (ascendDescend == AscendDescend.Ascend)
+            switch (ascendDescend)
             {
-                print(note1);
-                PlayNote(note1, firstInstrument);
-                yield return new WaitForSeconds(waitBetweenNotes);
-                print(note2);
-                PlayNote(m_Intervals[note2],secondInstrument);
-            }
-            else if (ascendDescend == AscendDescend.Descend)
-            {
-                print(note2);
-                PlayNote(note2, firstInstrument);
-                yield return new WaitForSeconds(waitBetweenNotes);
-                print(note1);
-                PlayNote(m_Intervals[note1], secondInstrument);
+                case AscendDescend.Ascend:
+                    //print(note1);
+                    PlayNote(note1, firstInstrument);
+                    yield return new WaitForSeconds(waitBetweenNotes);
+                    //print(note2);
+                    PlayNote(intervals[note2],secondInstrument);
+                    break;
+                
+                case AscendDescend.Descend:
+                    //print(note2);
+                    PlayNote(note2, firstInstrument);
+                    yield return new WaitForSeconds(waitBetweenNotes);
+                    //print(note1);
+                    PlayNote(intervals[note1], secondInstrument);
+                    break;
             }
         }
             
         private void PlayNote(int note, int instrument)
         {
+            if (note > bassNotes.Length)
+            {
+                note = bassNotes.Length -1;
+            }
             if (instrument == 1)
             {
                 audioSource.PlayOneShot(bassNotes[note]);
@@ -96,14 +109,6 @@ namespace TestScript
                 audioSource.PlayOneShot(pianoNotes[note]);
                 print("pianoNote spilt: " + pianoNotes[note]);
             }
-            /*
-            if (note > notes.Length)
-            {
-                note -= 12;
-            }
-        
-            audioSource.PlayOneShot(notes[note]);
-            print("Note spilt: " + notes[note]);*/
         }
     }
 }
