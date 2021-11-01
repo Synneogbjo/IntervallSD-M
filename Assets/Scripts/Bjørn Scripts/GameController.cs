@@ -97,12 +97,17 @@ public class GameController : MonoBehaviour
             }
             
             //Plays notes as a chord
-            if (GameSetter.useChord && !PlayedNoteOne)
+            if (GameSetter.useChord)
             {
                 if (PlayedNoteOne && PlayedNoteTwo) PlayingNotes = false;
-                
-                PlayNoteOne(0f);
-                PlayNoteTwo(waitBetweenNotes);
+
+                if (!PlayedNoteOne)
+                {
+                    PlayNoteOne(0f);
+                    instrument = 1;
+                    PlayNoteTwo(waitBetweenNotes);
+                    instrument = 0;
+                }
 
                 if (GameSetter.useTimer)
                 {
@@ -161,7 +166,10 @@ public class GameController : MonoBehaviour
     private void PlayNoteOne(float waitTime)
     {
         PlayedNoteOne = true;
-        _Notes.PlayNote(SetGrunntone.grunnTone, instrument);
+
+        var i = 0;
+        if (GameSetter.useChord) i = 12;
+        _Notes.PlayNote(SetGrunntone.grunnTone + i, instrument);
         timer = waitTime;
         
         _Particles.PlayParticles(0, -5f, 5f, 3f, 0f);
