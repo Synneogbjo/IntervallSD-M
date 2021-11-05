@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Test Scenes/Bj\xF8rn/Bj\xF8rnGameTest.unity"
     guid: 15ba4678bb54db14ebd647babf704eb7
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/RecoveredScene.unity
+    guid: b6cf9fab721054b4d8b4f104a0f29647
   m_configObjects: {}
